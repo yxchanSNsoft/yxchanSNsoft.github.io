@@ -1,0 +1,209 @@
+<html>
+  <head>
+      <title>yx chan Personal Site</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="header" id="header">
+
+    </div>
+    <div class="side-bar" id="side-bar">
+      
+      
+    </div>
+    <div class="content">
+      <div class="flex-display div-margin">
+         <div class="flex-one">
+
+              <img src="images/profilepic.png" class="avatar" />
+
+          </div>
+          <div class="flex-six">
+            <div class="expandable">
+              <h2>About me</h2>
+              <div class="expandable-info" id="SummaryDiv">
+                  handsome , smart boy.
+              </div>
+            </div>
+              
+          </div>
+      </div> 
+      <div class="div-margin">
+        <div class="expandable">
+          <h2>Education</h2>
+          <div class="expandable-info" id="EducationDiv">
+
+          </div>
+        </div>
+        <div class="expandable">
+          <h2>Skills</h2>
+            <div class="expandable-info">
+                <ul>
+                    <li> HTML, CSS, SASS </li>
+                    <li> Javascript (Jquery, React) </li>
+                    <li> PHP (MVC, Laravel , Yii2) </li>
+                </ul>
+          </div>
+        </div>
+        <div class="expandable">
+          <h2>Work Experience</h2>
+              <div class="expandable-info" id="WorkDiv">
+              </div>
+        </div>
+        <div class="expandable">
+          <h2>Portfolio</h2>
+              <div class="expandable-info">
+                  1) Built a player management system for online game using Node/Express/Angular.  <br/>
+                  2) Built a crypto currency exchange (Unihash, Unigram, Unie) using PHP MVC.  <br/>
+                  3) Volunteer to help a university student with FYP to build a soil moisture, temperature <br/>
+                  and humidity analysis website with data captured from an arduino machine.<br/>
+                  4) Building Front End websites with React. <br/>
+              </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer" id="footer"></div>
+  
+  
+  
+  
+  
+      <script>
+
+        let timeLine = [];
+
+        $.getJSON("data.json", function(json) {
+            console.log(json); // this will show the info it in firebug console
+            timeLine = json
+            renderTimeLine("Education", timeLine, "EducationDiv")
+            renderTimeLine("Work", timeLine, "WorkDiv")
+        });
+
+                
+        function renderTimeLine(type, timeLine, divIdToAppend) {
+            let result = timeLine.filter((item, key)=>{
+                return item.type == type ;
+            })
+
+            let resultHTML = "";
+            for (let i =0; i < result.length;i++) {
+              resultHTML += "<li>" + result[i].title + " (" + result[i].startDate + "-" + result[i].endDate + ")</li>";
+            }
+
+            resultHTML = "<ul>" + resultHTML + "</ul>";
+            $("#"+ divIdToAppend).html(resultHTML)
+
+        }
+
+
+    
+        
+        $(document).ready(function(){
+
+          $( "#header" ).load( "components/header.html", function() {
+              console.log("header load success")
+          } );
+          $( "#footer" ).load( "components/footer.html", function() {
+              console.log("footer load success")
+          } );
+
+          $( "#side-bar" ).load( "components/sidebar.html", function() {
+              console.log("sidebar load success")
+          } );
+
+          $(".expandable h2").click(function(e){
+            //$(this).find(".expandable-info").slideToggle("3000","linear");
+            $(this).next().slideToggle("3000","linear", function() {
+                if ($(this).css("display") == "none") {
+                  let ele = $(this).prev().find(".arrow-down");
+                  ele.removeClass("arrow-down");
+                  ele.addClass("arrow-up")
+                } else {
+                  let ele = $(this).prev().find(".arrow-up");
+                  ele.removeClass("arrow-up");
+                  ele.addClass("arrow-down")
+                }
+              
+            });
+
+
+          });
+
+          $(".expandable h2").prepend('<span class="arrow-down"></span>')
+
+          
+        });
+        
+        
+    </script>
+  
+  
+  
+    <style>
+      .content {
+          min-height : 1000px; 
+          min-width : 600px;
+      }
+      .flex-display {
+          display : flex;  
+        }
+        .div-margin {
+            margin: 15px 15px 15px 250px;  
+        }
+        .flex-one {
+          flex : 1;  
+        }
+        .flex-six {
+          flex : 6; 
+          margin : 15px;
+        }
+      .avatar {
+          width : 250px;
+          height : 250px;
+        }
+        .expandable {
+            border-radius : 4px;
+            border : none;
+            min-width : 100%;
+            min-height : 100px;
+            padding : 20px;
+            
+        }
+        .expandable:hover {
+            border-radius : 4px;
+            border : 2px solid white;
+        }
+        .expandable h2 {
+            cursor : pointer;
+        }
+        .arrow-up {
+          width: 0; 
+          height: 0; 
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          
+          border-bottom: 5px solid #7EF62B;
+          position : relative;
+          top : -15px;
+          left : -15px;
+        }
+
+        .arrow-down {
+          width: 0; 
+          height: 0; 
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          
+          border-top: 5px solid #7EF62B;
+          position : relative;
+          top : 15px;
+          left : -15px;
+        }
+    </style>
+  
+  </body>
+</html>
