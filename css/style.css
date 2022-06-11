@@ -52,4 +52,9 @@ a:active {
     width : 15px;
     height : 15px;
     margin : 0px 15px;
+    float : left;
 }
+.header-element {
+    width : 600px;
+    margin : auto;
+}   
