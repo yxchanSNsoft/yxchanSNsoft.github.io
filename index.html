@@ -28,7 +28,7 @@
               <div class="expandable-info" id="SummaryDiv">
                 I am currently working as a full stack developer at ExxonMobil. I am a self learned developer and have 3 years experience and various web technologies. I am also interested in lower level programming such as embedded system, C and C++. Even though these are mostly what i do as a hobby during my free time. I originally majored in biochemistry but had a change of heart in my mid 20s and decided to pick up programming by self studying. After grinding for a couple of years i landed my first developer job and i took off from there.
                 <p>
-                  <a href="cv.pdf">Download my Resume</a>
+                  <a href="cv.pdf"><div class="download-button">Download my Resume</div></a>
                 </p>
               </div>
             </div>
@@ -217,6 +217,28 @@
           position : relative;
           top : 15px;
           left : -15px;
+        }
+        .download-button {
+          border-radius: 30px;
+          border : 2px solid #fff;
+          background : transparent;
+          display : inline-block;
+          padding : 15px;
+          font-weight : 700;
+          animation: changeback 1s
+        }
+        .download-button:hover {
+          background : #fff;
+          color :aqua;
+          animation: changecolour 1s
+        }
+        @keyframes changecolour {
+          from {background-color: initial; color : initial}
+          to {background-color: #fff; color : aqua }
+        }
+        @keyframes changeback {
+          from {background-color: #fff; color : aqua}
+          to {background-color: initial; color : initial }
         }
     </style>
   
