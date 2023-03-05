@@ -1,0 +1,8 @@
+[
+    {"type":"Education" , "title":"College Tunku Abdul Rahman", "startDate":"2009", "endDate":"2011" , "content":""},
+    {"type":"Education" , "title":"University Of East London", "startDate":"2012", "endDate":"2014" , "content":""},
+    {"type":"Work" , "title":"Claims Assesor @ AIA", "startDate":"2015", "endDate":"2019" , "content":""},
+    {"type":"Work" , "title":"PHP Programmer @ Madx Radicle", "startDate":"2020", "endDate":"2020" , "content":""},
+    {"type":"Work" , "title":"Frontend web developer @ GlobalB2b", "startDate":"2020", "endDate":"2022" , "content":""},
+    {"type":"Work" , "title":"ExxonMobile", "startDate":"2022", "endDate":"Present" , "content":""}
+]

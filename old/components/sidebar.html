@@ -1,0 +1,21 @@
+<script>
+
+    let domain = ""
+
+    let sidebarData = [
+            {title:"Resume", url: domain + "/index.html"},
+            {title:"Timeline", url: domain + "/pages/timeline.html"},
+          ]
+        let sidebar = document.getElementById("side-bar");
+        for (let i =0;i<sidebarData.length;i++){
+            let sideBarElement = document.createElement("div");
+            sideBarElement.className = "sidebar-element";
+            sideBarElement.innerText = sidebarData[i].title;
+            
+            sideBarElement.addEventListener("click", function(){
+                window.location.href = sidebarData[i].url;
+            })
+            
+            sidebar.append(sideBarElement);
+        }
+</script>
